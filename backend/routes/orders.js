@@ -1,6 +1,6 @@
 import { Router } from "express";
 // استيراد موديل الـ Mongoose الخاص بالطلبات من مجلد database
-import Order from "../../database/orders.js"; 
+import Order from "../orders.js"; 
 
 const router = Router();
 
