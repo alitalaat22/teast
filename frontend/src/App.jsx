@@ -136,7 +136,7 @@ function App() {
       setError(null);
 
       try {
-        const response = await fetch(`${apiUrl}/orders`, {
+        const response = await fetch("http://localhost:3000/orders", {
           signal: controller.signal,
         });
 
@@ -158,7 +158,7 @@ function App() {
     loadOrders();
 
     return () => controller.abort();
-  }, [apiUrl]);
+  }, []);
 
   const filteredOrders = useMemo(() => {
     if (activeTab === "all") return orders;
@@ -302,7 +302,13 @@ function App() {
             <div className="mt-6 space-y-4">
               {loading && (
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 text-center text-slate-600 shadow-sm">
-                  Loading orders...
+                  {locale === "ar" ? "جاري تحميل الطلبات..." : "Loading orders..."}
+                </div>
+              )}
+
+              {!loading && filteredOrders.length === 0 && !error && (
+                <div className="rounded-3xl border border-slate-200 bg-white p-6 text-center text-slate-600 shadow-sm">
+                  {locale === "ar" ? "لا توجد طلبات متاحة" : "No orders found"}
                 </div>
               )}
 
