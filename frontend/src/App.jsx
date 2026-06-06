@@ -17,6 +17,8 @@ import {
   XCircle,
 } from "lucide-react";
 
+const BASE_URL = import.meta.env.VITE_API_URL || "https://pharmalink-back-end.onrender.com";
+
 const ui = {
   en: {
     dir: "ltr",
@@ -136,7 +138,7 @@ function App() {
       setError(null);
 
       try {
-        const response = await fetch("http://localhost:3000/orders", {
+        const response = await fetch(`${BASE_URL}/orders`, {
           signal: controller.signal,
         });
 
